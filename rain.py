@@ -2,7 +2,6 @@
 
 #/usr/bin/env  python3.7
 
-print("Is it raining outside??")
 
 while True:
     print('')
@@ -17,8 +16,16 @@ while True:
               print('Take umbrella and go out')
               break
          else:
+           while True:
               print('Don\'t have umbrella so Wait until rain stops')
-              continue
+              print('Still raining: yes/no?')
+              rain = input()
+              if  rain == 'yes':
+                  print('Wait a while untill rain stops')
+              else:
+                  print('Go outside')
+                  break
+           break
     else:
         print('It\'s not rainig , we can go out')
         break
