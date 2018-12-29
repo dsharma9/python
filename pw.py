@@ -1,12 +1,18 @@
-import pyperclip
-import sys
+#! python3
+# pw.py - An insecure password locker program.
+PASSWORDS = {'email': 'F7minlBDDuvMJuxESSKHFhTxFtjVB6',
+             'blog': 'VmALvQyKAxiVH5G8v01if1MLZF3sdt',
+             'luggage': '12345'}
 
-if len(sys.argv) > 1 and sys.argv[1] in ('-c', '--copy'):
-     pyperclip.copy(sys.stdin.read())
-elif len(sys.argv) > 1 and sys.argv[1] in ('-p', '--paste'):
-     sys.stdout.write(pyperclip.paste())
+import sys, pyperclip
+if len(sys.argv) < 2:
+    print('Usage: py pw.py [account] - copy account password')
+    sys.exit()
+
+account = sys.argv[1]   # first command line arg is the account name
+
+if account in PASSWORDS:
+    pyperclip.copy(PASSWORDS[account])
+    print('Password for ' + account + ' copied to clipboard.')
 else:
-     print('Usage: python -m pyperclip [-c | --copy] | [-p | --paste]')
-     print()
-     print('When copying, stdin will be placed on the clipboard.')
-     print('When pasting, the clipboard will be written to stdout.')
+    print('There is no account named ' + account)
