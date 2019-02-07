@@ -1,0 +1,33 @@
+#!/usr/bin/env python3.7
+
+import argparse
+import sys
+
+oArgs=argparse.ArgumentParser(description='Read and reversing the file')
+
+oArgs.add_argument('filename', help='Kindly enter the file name')
+oArgs.add_argument('--limit', '-l', type=int, help='Kindly enter the line number ')
+oArgs.add_argument('--version', '-v', action='version', version= '%(prog)s 1.0')
+
+cArgs=oArgs.parse_args()
+
+try:
+    f = open(cArgs.filename)
+    limit=cArgs.limit
+except FileNotFoundError as e:
+    print(f'Error: {e}')
+    sys.exit(2)
+else:
+    with f:
+      lines=f.readlines()
+      lines.reverse()
+      print()
+      print()
+
+      if cArgs.limit:
+         lines=lines[:cArgs.limit]
+
+      for line in lines:
+         print(line.strip()[::-1])
+finally:
+    print(f'entered filename is {sys.argv[1]}')

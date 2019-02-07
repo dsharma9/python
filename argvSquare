@@ -1,0 +1,15 @@
+#!/usr/bin/env python3.7
+
+import argparse
+
+print("Making square of the input interger at command line passed as argument")
+print()
+
+pArg=argparse.ArgumentParser()
+pArg.add_argument('integer', help='Kindly enter any digit')
+cArg=pArg.parse_args()
+
+print(f"The square of {cArg.integer} is {int(cArg.integer)**2}")
+
+print(type(cArg.integer))
+

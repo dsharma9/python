@@ -1,0 +1,23 @@
+#!/usr/bin/env python3.7
+
+import argparse
+
+word=argparse.ArgumentParser()
+word.add_argument('sniff')
+
+sniff_word=word.parse_args()
+sw=sniff_word.sniff
+
+
+matches=[]
+
+
+with open('/usr/share/dict/words') as f:
+    words=f.readlines()
+
+for w in words:
+    if sw in  w:
+        matches.append(sw)
+
+print(matches)
+

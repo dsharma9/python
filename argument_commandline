@@ -1,0 +1,24 @@
+#!/usr/bin/env python3.7
+
+import argparse
+
+print("This program will take input as text file from command line and reverse the file")
+
+
+'''hello.txt is a text file having few line which is being reversed by this program. '''
+
+argP = argparse.ArgumentParser()
+
+argP.add_argument('text', help='Reversing text file')
+
+varP=argP.parse_args()
+
+print('The file name is : ' + varP.text)
+
+print('The file before reversing')
+with open(varP.text) as f:
+    f1=f.read()
+    print(f1)
+    print()
+    print(f1[::-1])
+
